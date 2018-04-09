@@ -1,0 +1,15 @@
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
