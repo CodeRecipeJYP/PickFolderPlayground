@@ -6,6 +6,7 @@ import android.view.ViewGroup
 
 
 class FolderAdapter : RecyclerView.Adapter<FolderViewHolder>() {
+    var mSelected: Int = -1
     var mItems: List<Folder> = emptyList()
         set(value) {
             field = value
@@ -20,6 +21,11 @@ class FolderAdapter : RecyclerView.Adapter<FolderViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
+        holder.setOnItemClicked {
+            mSelected = position
+            notifyDataSetChanged()
+        }
+        holder.setSelected(mSelected == position)
         holder.configure(mItems[position])
     }
 

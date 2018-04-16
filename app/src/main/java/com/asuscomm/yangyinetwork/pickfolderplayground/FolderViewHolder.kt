@@ -12,14 +12,20 @@ class FolderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
     init {
         itemView.iv_folder.setImageDrawable(itemView.iv_folder.drawable.mutate())
-        itemView.setOnClickListener {
-            Log.d(TAG, "clicked, itemView.iv_folder.isSelected = ${itemView.iv_folder.isSelected}")
-            itemView.iv_folder.isSelected = !itemView.iv_folder.isSelected
-        }
     }
 
     fun configure(folder: Folder) {
         DrawableCompat.setTint(itemView.iv_folder.drawable, FOLDER_COLOR.get(folder.color)!!)
         itemView.tv_foldername.text = folder.name
+    }
+
+    fun setSelected(b: Boolean) {
+        itemView.iv_folder.isSelected = b
+    }
+
+    fun setOnItemClicked(action: () -> Unit) {
+        itemView.setOnClickListener {
+            action()
+        }
     }
 }
